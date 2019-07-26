@@ -14,8 +14,8 @@ app.listen(process.env.port || port, () => console.log(`App listening on port ${
 
 function getResponse(obj){
   const { name, fda_approved_drug } = obj;
-  const url = `http://dgidb.org/api/v2/interactions.json?genes=${name}`;
-  fda_approved_drug === true ? url = `${url}&fda_approved_drug=${fda_approved_drug}` : "";
+  let url = `http://dgidb.org/api/v2/interactions.json?genes=${name}`;
+  fda_approved_drug === "true" ? url = `${url}&fda_approved_drug=${fda_approved_drug}` : "";
   return fetch(url)
     .then(response => response.json())
     .then(data => data)
