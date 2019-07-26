@@ -1,12 +1,12 @@
 const express = require("express");
 const fetch = require("node-fetch");
 const app = express()
-const port = 4000
+const port = 4045
 
 app.get('/gene', (req, res) => {
   var response = getResponse(req.query);
   response.then( data => {
-    res.send(data);
+    res.jsonp(data);
   })
 })
 
