@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const app = express()
 const port = 4045
 
-app.get('/gene', (req, res) => {
+app.get('/genetodrugs', (req, res) => {
   var response = getResponse(req.query);
   response.then( data => {
     res.jsonp(data);
