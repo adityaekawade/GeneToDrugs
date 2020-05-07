@@ -1,7 +1,7 @@
 const express = require("express");
 const fetch = require("node-fetch");
 const app = express()
-const port = 4045
+const port = 4000
 
 app.get('/genetodrugs', (req, res) => {
   var response = getResponse(req.query);
