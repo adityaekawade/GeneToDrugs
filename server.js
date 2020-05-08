@@ -11,12 +11,28 @@ app.use(json());
 app.use(router.routes()).use(router.allowedMethods()); 
 
 router.get('/geneToDrugs', async ctx => {
-  const args = ctx.query.gene;
-  let url = `http://dgidb.org/api/v2/interactions.json?genes=${args}`;
+  const gene = ctx.query.gene;
+  let url = `http://dgidb.org/api/v2/interactions.json?genes=${gene}`;
   await fetch(url)
   .then(response => response.json())
   .then(res => {
     ctx.body = res
+  })
+  .catch(err => {
+    ctx.body = err 
+  })
+})
+
+router.get('/drugs', async ctx => {
+  const chembl_id = ctx.query.id;
+  let url = `http://dgidb.org/api/v2/drugs/${chembl_id}`;
+  await fetch(url)
+  .then(response => response.json())
+  .then(res => {
+    ctx.body = res
+  })
+  .catch(err => {
+    ctx.body = err 
   })
 })
 
